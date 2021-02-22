@@ -6,8 +6,13 @@ import { TransactionSchema } from './transaction.schema';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-      { name: 'Transaction', schema: TransactionSchema },
+    MongooseModule.forFeatureAsync([
+      {
+        name: 'Transaction',
+        useFactory: () => {
+          return TransactionSchema;
+        },
+      },
     ]),
   ],
   controllers: [TransactionController],
