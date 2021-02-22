@@ -31,7 +31,7 @@ export class UserController {
   }
 
   @Post('')
-  async addCustomer(@Res() res, @Body() userDTO: UserDTO) {
+  async create(@Res() res, @Body() userDTO: UserDTO) {
     const lists = await this.service.create(userDTO);
     return res.status(HttpStatus.OK).json({
       message: 'User has been created successfully',

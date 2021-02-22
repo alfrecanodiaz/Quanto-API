@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+import { SchemaTypes } from 'mongoose';
 
 export const UserSchema = new mongoose.Schema({
   name: {
@@ -29,4 +30,10 @@ export const UserSchema = new mongoose.Schema({
     min: 10,
     default: '',
   },
+  transactions: [
+    {
+      type: SchemaTypes.ObjectId,
+      ref: 'Transaction',
+    },
+  ],
 });

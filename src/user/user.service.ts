@@ -6,30 +6,30 @@ import { UserDTO } from './user.dto';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel('User') private userModel: Model<User>) {}
+  constructor(@InjectModel('User') private model: Model<User>) {}
 
   async findAll(): Promise<any> {
-    return await this.userModel.find().exec();
+    return await this.model.find().exec();
   }
 
   async findById(id): Promise<User> {
-    return await this.userModel.findById(id).exec();
+    return await this.model.findById(id).exec();
   }
 
   async find(req): Promise<any> {
-    return await this.userModel.find(req).exec();
+    return await this.model.find(req).exec();
   }
 
   async create(userDTO: UserDTO): Promise<any> {
-    const user = new this.userModel(userDTO);
+    const user = new this.model(userDTO);
     return user.save();
   }
 
   async update(id, userDTO: UserDTO): Promise<any> {
-    return await this.userModel.findByIdAndUpdate(id, userDTO, { new: true });
+    return await this.model.findByIdAndUpdate(id, userDTO, { new: true });
   }
 
   async delete(id): Promise<any> {
-    return await this.userModel.findByIdAndRemove(id);
+    return await this.model.findByIdAndRemove(id);
   }
 }

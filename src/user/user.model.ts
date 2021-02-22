@@ -5,4 +5,5 @@ export interface User extends Document {
   readonly lastname: string;
   readonly email: string;
   readonly phone_number: string;
+  readonly transactions?: [any];
 }
